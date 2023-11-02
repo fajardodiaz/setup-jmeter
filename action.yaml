@@ -1,0 +1,24 @@
+name: "Setup JMeter"
+description: "Setup selected version of Jmeter"
+inputs:
+  jmeter_version:
+    description: "Jmeter version to install"
+    required: true
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-java@v3
+      with:
+        distribution: 'temurin'
+        java-version: '11'
+    - name: Select the Jmeter version
+      shell: bash
+      run: |
+        if [-z "${{inputs.jmeter_version}}"]
+        then
+          echo "final_version=5.6.2" >> $GITHUB_ENV
+        else
+          echo "final_version=${{inputs.jmeter}} >> $GITHUB_ENV
+        fi
+        echo $GITHUB_ENV
+        echo $final_version
