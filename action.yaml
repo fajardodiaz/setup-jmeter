@@ -1,10 +1,10 @@
-name: "Setup JMeter"
-description: "Setup selected version of Jmeter"
+name: 'Setup JMeter'
+description: 'Setup selected version of Jmeter'
 inputs:
   jmeter_version:
-    description: "Jmeter version to install"
+    description: 'Jmeter version to install'
     required: true
-    default: "5.6.2"
+    default: '5.6.2'
 runs:
   using: composite
   steps:
@@ -19,7 +19,7 @@ runs:
         then
           echo "final_version=5.6.2" >> $GITHUB_ENV
         else
-          echo "final_version=${{inputs.jmeter}} >> $GITHUB_ENV
+          echo "final_version=${{inputs.jmeter}}" >> $GITHUB_ENV
         fi
         echo $GITHUB_ENV
         echo $final_version
