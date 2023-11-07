@@ -13,8 +13,12 @@ runs:
         distribution: 'temurin'
         java-version: '11'
     - name: Select the Jmeter version
+      id: jmeter
       shell: bash
       run: |
-        echo "final_version=${{inputs.jmeter}}" >> $GITHUB_ENV
-        echo $GITHUB_ENV
-        echo $final_version
+        cd /home/ubuntu/
+        wget https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.6.2.zip
+        unzip apache-jmeter-5.6.2.zip
+        cd apache-jmeter-5.6.2
+        bin/jmeter -v
+
